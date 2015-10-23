@@ -8,3 +8,22 @@ function hello(){
 function bye(){
     console.info("adeu mon");
 }
+
+/*$(function(){
+    $('#helloworld').show();
+});*/
+
+function sayhello(){
+    $('#helloworld').show();
+}
+
+//or
+
+$(function(){
+    $('#sayhello').click( function() {
+        //console.debug("prova");
+        //alert("HOLA");
+        //$('#helloworld').show();
+        $('#sayhello').click( sayhello())
+    })
+});
