@@ -11,18 +11,27 @@
 |
 */
 
-Route::get('/', function () {
+Route::get(/**
+ * @return \Illuminate\View\View
+ */
+    '/', function () {
     return view('welcome');
 });
 
 
-Route::get('/home', ['as' => 'auth.home',function () { return view('home'); }]);
+Route::get('/home', ['as' => 'auth.home', /**
+ * @return \Illuminate\View\View
+ */
+    function () { return view('home');
+ }]);
 
 Route::get('/login', ['as' =>'auth.login', 'uses' => 'loginController@getLogin']);
 Route::post('/postLogin', ['as' =>'auth.postLogin', 'uses' => 'loginController@postLogin']);
 
-
-Route::get('/resource', function () {
+/**
+ * @return \Illuminate\View\View
+ */
+Route::get( '/resource', function () {
     //\Debugbar::stopMeasure("resource");
     $authenticated = false;
     Session::set('authenticated', true);
