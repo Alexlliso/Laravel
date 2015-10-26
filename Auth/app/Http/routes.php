@@ -16,13 +16,13 @@ Route::get('/', function () {
 });
 
 
-Route::get('/home', function () {
+Route::get('/home', ['as' => 'auth.home',function () {
     return view('home');
-});
+}]);
 
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/login', ['as' =>'auth.login', 'uses' => 'loginController@getLogin']);
+Route::post('/postLogin', ['as' =>'auth.postLogin', 'uses' => 'loginController@postLogin']);
+
 
 Route::get('/resource', function () {
     //\Debugbar::stopMeasure("resource");

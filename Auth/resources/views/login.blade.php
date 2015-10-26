@@ -39,18 +39,21 @@
 <div class="container">
     <div class="content">
         <div class="title">Login</div>
-        <label for="email">Email address:</label>
-        <input type="email" class="form-control" id="email" name="email">
-        <form>
-            <div class="form-group">
+        <form method="post" action="{( route (/auth.postLogin) )}">
+        {([ csrf_field() ])}
+        <div class="form-group">
+            <label for="email">Email address:</label>
+            <input type="email" class="form-control" id="email" name="email">
+        </div>
+        <div class="form-group">
                 <label for="password">Password:</label>
                 <input type="password" class="form-control" id="email" name="password">
-            </div>
-            <div class="checkbox">
-                <label><input type="checkbox"> Remeber Me</label>
-            </div>
-            <button type="submit" class="btn btn-default">Login</button>
-            <button type="submit" class="btn btn-default">Reset</button>
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox"> Remeber Me</label>
+        </div>
+        <button type="submit" class="btn btn-default">Login</button>
+        <button type="submit" class="btn btn-default">Reset</button>
         </form>
     </div>
 </div>
