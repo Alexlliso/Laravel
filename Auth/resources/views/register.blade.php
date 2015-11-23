@@ -5,6 +5,9 @@
 
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
+    <link href="{{asset('css/all.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/app.css') }}" rel="stylesheet" type="text/css">
+
     <style>
         html, body {
             height: 100%;
@@ -55,33 +58,45 @@
             <div class="form-group">
                 <label for="name">User name:</label>
                 <input type="text" class="form-control" id="name" name="name"
+                       value="{{ old ('name') }}"
                        placeholder="El teu nom aquí"
-                       value="{{ old('name') }}"
                        required>
             </div>
-            <div class="form-group">
-                <label for="email">Email address:</label>
+            <div class="form-group" id="emailFormGroup" >
+                <label for="email">Email adress:</label>
+
+
+
                 <input type="email" class="form-control" id="email" name="email"
-                       placeholder="myemail@example.com"
-                       value="{{ old('email') }}"
-                       required>
+                       placeholder="@{{placeholder}}"
+                       value="{{ old ('email') }}"
+                       required
+                       v-on:blur="checkEmailExists">
+                      <!-- v-on:onblur="checkEmailExists">
+                <div v-show="exists">Email ja existeix</div>-->
             </div>
+
+           <!-- <email-with-validation></email-with-validation>-->
+
             <div class="form-group">
                 <label for="password">Password:</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <div class="form-group">
-                <label for="password_confirmation">Password confirm:</label>
-                <input type="password" class="form-control" id="password_confirm" name="password_confirm" required>
+                <label for="password_confirm">Password confirm:</label>
+                <input type="password" class="form-control" id="password_confirm" name="password_confirmation" required>
             </div>
 
-            <button id="login" type="submit" class="btn btn-default">Register</button>
+            <button id="register" type="submit" class="btn btn-primary">Register</button>
             <button type="reset" class="btn btn-default">Reset</button>
+
         </form>
 
         Ja tens usuari?
-        <a id="login" href="{{ route('auth.login') }}">Loga't</a>
+        <a id="register" href="{{ route('auth.login') }}">Login</a>
     </div>
 </div>
+<script src="{{ asset('js/all.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>
