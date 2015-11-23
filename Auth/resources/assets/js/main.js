@@ -1,4 +1,5 @@
 var Vue = require('vue');
+var $ = require('jquery');
 
 var vm = new Vue({
     el: '#email',
@@ -16,8 +17,24 @@ var vm = new Vue({
             console.debug("A punt de cridar:");
             console.debug(this.url);
             console.debug(email);
-            var url = this.url + "?email=" +  email;
+            var url = this.url + "email=" +  email;
             console.debug(url);
+
+            $.ajax(url).done(function(data) {
+                //Funciona bé
+                console.debug(data);
+                if(data == "true"){
+                    //TODO email esta lliure DO NOTHING
+                }else{
+                    alert('email ocupat');
+                }
+            }).fail(function(data){
+                //error
+                alert("Estas que lo petas");
+            }).always(function(data){
+                //sempre
+                console.debug("Xivato");
+            });
         }
     }
 });
