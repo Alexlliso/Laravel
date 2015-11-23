@@ -25,6 +25,7 @@ class loginController extends Controller
 
         if ($this->login($request->email,$request->password)){
             //REDIRECT TO HOME
+            //Session::set('authenticated',true);
             return redirect()->route('auth.home');
         }else{
             //REDIRECT BACK
